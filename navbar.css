@@ -13,7 +13,6 @@
     display: flex;
 }
 
-/* Company Logo */
 #company-logo-dark {
     min-height: 36px;
     height: 2.5vw;
@@ -23,7 +22,6 @@
     display: flex;
 }
 
-/* Hamburger */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -42,7 +40,6 @@
     transition: 0.3s ease;
 }
 
-/* Navigation Links */
 .links {
     display: flex;
     gap: 16px;
@@ -80,13 +77,10 @@
 .links ul li a svg {
     width: 18px;
     height: 18px;
-
-    /* vertical-align: baseline; */
 }
 
 .links ul li:hover {
     cursor: pointer;
-    /* outline: 1px solid var(--bg-primary); */
     background-color: var(--text-primary);
 }
 
