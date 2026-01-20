@@ -112,6 +112,156 @@
     position: relative;
 }
 
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.file-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Animation state - only when class is added */
+.file-card-wrapper.will-animate {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.file-card-wrapper.animate-in {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+/* Stagger animation delays */
+.file-card-wrapper.animate-in:nth-child(1) { animation-delay: 0.1s; }
+.file-card-wrapper.animate-in:nth-child(2) { animation-delay: 0.2s; }
+.file-card-wrapper.animate-in:nth-child(3) { animation-delay: 0.3s; }
+.file-card-wrapper.animate-in:nth-child(4) { animation-delay: 0.4s; }
+
+/* Slide in from bottom animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.file-card {
+    flex: 1;
+    background: var(--bg-primary);
+    outline: 1px dashed #5879a8;
+    border-radius: 20px;
+    aspect-ratio: 1.25 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    transition: 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+/* Card Content */
+.card-content {
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.card-content svg {
+    margin-bottom: 12px;
+}
+
+.card-content p {
+    font-size: 20px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.upload-hint {
+    font-size: 16px !important;
+    color: var(--text-secondary);
+}
+
+.file-input {
+    display: none;
+}
+
+#input-file-1:hover {
+    background-color: rgb(255, 49, 49, 0.1);
+}
+
+#input-file-2:hover {
+    background-color: rgb(31, 81, 255, 0.1);
+}
+
+#input-file-3:hover {
+    background-color: rgb(255, 255, 0, 0.1);
+}
+
+#input-file-4:hover {
+    background: rgb(0, 209, 56, 0.1);
+}
+.upload-icon {
+    width: 5vw;
+    height: 5vw;
+    color: var(--svg-color);
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* font-size: 16px; */
+}
+
+.btn-group button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-upload {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-upload:hover {
+    /* background: #60a5fa; */
+    color: black;
+    /* transform: translateY(-2px); */
+}
+
+.btn-delete {
+    background: #334155;
+    color: #e5e7eb;
+}
+
+.btn-delete:hover {
+    background: #FF3131;
+    color: black;
+}
+
+.mobile-buttons {
+    display: none;
+}
+
 @media (max-width: 935px) {
     .file-upload {
         padding: 16px 24px;
@@ -153,10 +303,55 @@
         width: 100%;
         box-sizing: border-box;
     }
+
+    .file-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .upload-icon {
+        width: 10vw;
+        height: 10vw
+    }
+
+
+    /* Show mobile buttons */
+    .mobile-buttons {
+        display: flex;
+        gap: 12px; 
+        width: 100%;
+        padding-top: 12px;
+    }
+    .mobile-buttons .btn-clear-all, 
+    .mobile-buttons .btn-generate {
+        padding: 12px 16px;
+        flex: 1;
+        width: 50%;
+        border-radius: 0px;
+        margin-bottom: 0px;
+    }
+    .mobile-buttons .btn-clear-all {
+        border-top: none;
+        border-right: none;
+        border-bottom-left-radius: 16px;
+    }
+    .mobile-buttons .btn-generate {
+        border-top: none;
+        border-bottom-right-radius: 16px;
+    }
 }
 
 @media (max-width: 524px) {
     .file-upload {
-        padding: 16px 24px;
+        padding: 16px 16px;
+    }
+
+    /* Single Column Grid on Mobile */
+    .file-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .upload-icon {
+        width: 20vw;
+        height: 20vw
     }
 }
