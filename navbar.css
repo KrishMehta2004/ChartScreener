@@ -91,7 +91,7 @@
 /* ==========================================================================
    RESPONSIVE DESIGN - TABLET
    ========================================================================== */
-@media (max-width: 1024px) {
+@media (max-width: 935px) {
     .navbar {
         box-shadow: inset 0 0px 0 var(--box-shadow),
             0 4.5px 9px var(--box-shadow); 
