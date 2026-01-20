@@ -1,0 +1,39 @@
+/* Dark Theme */
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #404040;
+    --box-shadow: rgba(0, 0, 0, 0.5);
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;     
+    --icon-fill: #e0e0e0;
+    --icon-fill-hover: #ffdd21;
+    --border-color: #374151;
+    --svg-color: #94a3b8;
+    --company-1 : rgb(255, 49, 49);
+    --company-2 : rgb(31, 81, 255);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: #e5e5e5;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --box-shadow: rgba(0, 0, 0, 0.5);
+    --text-primary: #212529; 
+    --icon-fill: #212529;
+    --icon-fill-hover: #909090;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed';
+}
+
+.container {
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
