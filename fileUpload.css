@@ -63,13 +63,58 @@
     text-decoration: none;
     transition: 0.2s ease;
 }
+
 .panel-header a:hover {
     text-decoration: underline;
 }
 
+/* Generate and Clear button */
+.right-file-upload-header {
+    display: flex;
+    padding-bottom: 8px;
+    padding-right: 8px;
+    gap: 10px;
+}
+
+/* Action Buttons in Header */
+.btn-clear-all,
+.btn-generate {
+    padding: 8px 16px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 6px 12px rgba(0, 0, 0, 0.5); 
+}
+
+.btn-clear-all:hover {
+    background: #FF3131;
+    color: black;
+}
+
+.btn-generate:hover {
+    background: #00d138;
+    color: black;
+}
+
+.file-upload-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
 @media (max-width: 935px) {
     .file-upload {
-        padding: 16px 32px;
+        padding: 16px 24px;
     }
 
     .file-upload-header {
@@ -82,19 +127,36 @@
 
     .left-file-upload-header {
         text-align: center;
-        /* padding: 12px 16px; */
+        padding: 16px 32px;
         width: 100%;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
+        box-sizing: border-box;
     }
 
     .left-file-upload-header::before, .left-file-upload-header::after {
         display: none;
     }
+
+    /* Hide desktop buttons on mobile */
+    .right-file-upload-header {
+        display: none;
+    }
+
+    .file-upload-panel {
+        border-top: 1px solid var(--border-color);
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding: 16px 32px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 @media (max-width: 524px) {
     .file-upload {
-        padding: 16px 32px;
+        padding: 16px 24px;
     }
 }

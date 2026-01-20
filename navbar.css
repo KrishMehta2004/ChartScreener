@@ -88,6 +88,7 @@
     color: var(--bg-primary);
 }
 
+
 /* ==========================================================================
    RESPONSIVE DESIGN - TABLET
    ========================================================================== */
@@ -148,4 +149,13 @@
         height: min(25px, 4.5vw);
     }
 
+    /* Blur background when mobile menu is open */
+    body.menu-open .page-content {
+        filter: blur(6px);
+        transition: filter 0.2s ease;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
 }
