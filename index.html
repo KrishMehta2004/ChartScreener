@@ -29,6 +29,9 @@
         <link rel="stylesheet" href="navbar.css">
         <link rel="stylesheet" href="fileUpload.css">
 
+        <!--XLSX-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+
     </head>
     <!--/head-->
 
@@ -174,7 +177,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn-upload" type="button">Browse</button>
+                                    <button id="btn-upload-1" class="btn-upload" type="button">Browse</button>
                                     <button id="remove_1" class="btn-delete" type="button">Delete</button>
                                 </div>
 
@@ -203,8 +206,8 @@
 
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn-upload" type="button">Browse</button>
-                                    <button id="remove_1" class="btn-delete" type="button">Delete</button>
+                                    <button id="btn-upload-2" class="btn-upload" type="button">Browse</button>
+                                    <button id="remove_2" class="btn-delete" type="button">Delete</button>
                                 </div>                            
                             </div>
                             
@@ -230,8 +233,8 @@
                                     </div>
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn-upload" type="button">Browse</button>
-                                    <button id="remove_1" class="btn-delete" type="button">Delete</button>
+                                    <button id="btn-upload-3" class="btn-upload" type="button">Browse</button>
+                                    <button id="remove_3" class="btn-delete" type="button">Delete</button>
                                 </div>                            
                             </div>
                             
@@ -258,8 +261,8 @@
 
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn-upload" type="button">Browse</button>
-                                    <button id="remove_1" class="btn-delete" type="button">Delete</button>
+                                    <button id="btn-upload-4" class="btn-upload" type="button">Browse</button>
+                                    <button id="remove_4" class="btn-delete" type="button">Delete</button>
                                 </div>                            
                             </div> 
                                             
@@ -295,7 +298,7 @@
 
         <!--Add JS Files-->
         <script src="navbar.js"></script>
-        <script src="fileUpload.js"></script>
+        <script src="fu.js"></script>
 
     </body>
     <!--/body-->

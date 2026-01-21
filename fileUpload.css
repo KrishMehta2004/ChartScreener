@@ -90,7 +90,7 @@
     border: 1px solid var(--border-color);
     margin-bottom: 1px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 6px 12px rgba(0, 0, 0, 0.5); 
+        0 3px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .btn-clear-all:hover {
@@ -108,7 +108,7 @@
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
@@ -170,6 +170,11 @@
     cursor: pointer;
 }
 
+.file-card.drag-over {
+    border: 2px dashed #4caf50;
+    background: rgba(76, 175, 80, 0.08);
+}
+
 /* Card Content */
 .card-content {
     text-align: center;
@@ -200,7 +205,15 @@
     background-color: rgb(255, 49, 49, 0.1);
 }
 
+#input-file-1.uploaded {
+    background-color: rgb(255, 49, 49, 0.1);
+}
+
 #input-file-2:hover {
+    background-color: rgb(31, 81, 255, 0.1);
+}
+
+#input-file-2.uploaded {
     background-color: rgb(31, 81, 255, 0.1);
 }
 
@@ -208,13 +221,30 @@
     background-color: rgb(255, 255, 0, 0.1);
 }
 
+#input-file-3.uploaded {
+    background-color: rgb(255, 255, 0, 0.1);
+}
+
 #input-file-4:hover {
     background: rgb(0, 209, 56, 0.1);
 }
+
+#input-file-4.uploaded {
+    background: rgb(0, 209, 56, 0.1);
+}
+
 .upload-icon {
     width: 5vw;
     height: 5vw;
     color: var(--svg-color);
+}
+
+.xlsx-icon {
+    width: 5vw;
+    height: 5vw;
+    color: var(--svg-color);
+    display: none;
+    margin: 0 auto;
 }
 
 .btn-group {
@@ -256,6 +286,27 @@
 .btn-delete:hover {
     background: #FF3131;
     color: black;
+}
+
+.file-card.uploaded .upload-icon {
+    display: none;
+}
+
+.file-card.uploaded .xlsx-icon {
+    display: flex;
+    animation: iconPopIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Icon pop-in animation */
+@keyframes iconPopIn {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 .mobile-buttons {
