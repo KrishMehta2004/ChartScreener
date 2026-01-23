@@ -364,6 +364,10 @@
         height: 10vw
     }
 
+    .xlsx-icon {
+        width: 10vw;
+        height: 10vw
+    }
 
     /* Show mobile buttons */
     .mobile-buttons {
@@ -372,6 +376,7 @@
         width: 100%;
         padding-top: 12px;
     }
+
     .mobile-buttons .btn-clear-all, 
     .mobile-buttons .btn-generate {
         padding: 12px 16px;
@@ -380,11 +385,13 @@
         border-radius: 0px;
         margin-bottom: 0px;
     }
+
     .mobile-buttons .btn-clear-all {
         border-top: none;
         border-right: none;
         border-bottom-left-radius: 16px;
     }
+
     .mobile-buttons .btn-generate {
         border-top: none;
         border-bottom-right-radius: 16px;
@@ -403,6 +410,11 @@
 
     .upload-icon {
         width: 20vw;
-        height: 20vw
+        height: 20vw;
+    }
+    
+    .xlsx-icon {
+        width: 20vw;
+        height: 20vw;
     }
 }

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartScreener | Dashboard | Visualization Tool | Compare Stocks</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-3.3.0.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            margin-top: 30px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Chart Card */
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .chart {
+            width: 100%;
+            height: 400px;
+        }
+
+        /* Info Button */
+        .info-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .info-btn:hover {
+            background: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+
+        .info-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Info Overlay */
+        .info-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .info-overlay.active {
+            display: flex;
+        }
+
+        .info-content {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .info-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .info-content p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            width: 90vw;
+            height: 90vh;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .close:hover {
+            transform: scale(1.2);
+        }
+
+        #modalChart {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .chart {
+                height: 300px;
+            }
+
+            .modal-content {
+                width: 95vw;
+                height: 85vh;
+                padding: 15px;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Stock Comparison Dashboard</h1>
+            <p>Click on any chart to view full-screen details</p>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-row">
+                <!-- Sales Chart -->
+                <div class="chart-card" onclick="openChart('sales')">
+                    <button class="info-btn" onclick="toggleInfo(event, this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                        </svg>
+                    </button>
+                    <div class="chart" id="chart1"></div>
+                    <div class="info-overlay" onclick="hideInfo(event, this)">
+                        <div class="info-content">
+                            <h3>Revenue Trend (in Rs. Crore)</h3>
+                            <p>Sales over the years</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Chart -->
+                <div class="chart-card" onclick="openChart('growth')">
+                    <button class="info-btn" onclick="toggleInfo(event, this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                        </svg>
+                    </button>
+                    <div class="chart" id="chart2"></div>
+                    <div class="info-overlay" onclick="hideInfo(event, this)">
+                        <div class="info-content">
+                            <h3>Sales Growth (%)</h3>
+                            <p>Year-over-year growth comparison</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Modal -->
+        <div id="chartModal" class="modal" onclick="closeChartModal(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="close" onclick="closeChartModal(event)">&times;</button>
+                <div id="modalChart"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const chartArrayDataJson = {
+            "1": {
+                "Legend": "ADANI POWER LTD",
+                "CurrentPrice": 148.17,
+                "MarketCap": 285741.32,
+                "FinancialYear_PL": ["FY16", "FY17", "FY18", "FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25"],
+                "Sales_PL": [25377, 22616, 20304, 23884, 26468, 26221, 27711, 38773, 50351, 56203],
+                "Sales_Growth_PL": [null, -10.9, -10.2, 17.6, 10.8, -0.9, 5.7, 39.9, 29.9, 11.6]
+            },
+            "2": {
+                "Legend": "TATA POWER COMPANY LTD",
+                "CurrentPrice": 393.1,
+                "MarketCap": 125608.8,
+                "FinancialYear_PL": ["FY16", "FY17", "FY18", "FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25"],
+                "Sales_PL": [29494, 27588, 26840, 29881, 29136, 32703, 42816, 55109, 61449, 65478],
+                "Sales_Growth_PL": [null, -6.5, -2.7, 11.3, -2.5, 12.2, 30.9, 28.7, 11.5, 6.6]
+            }
+        };
+
+        // Toggle info overlay
+        function toggleInfo(event, btn) {
+            event.stopPropagation();
+            const card = btn.closest('.chart-card');
+            const overlay = card.querySelector('.info-overlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Hide info overlay
+        function hideInfo(event, overlay) {
+            event.stopPropagation();
+            overlay.classList.remove('active');
+        }
+
+        // Plot Sales Chart
+        function plotSalesChart(isCompact = true) {
+            const x1 = chartArrayDataJson['1'].FinancialYear_PL;
+            const x2 = chartArrayDataJson['2'].FinancialYear_PL;
+            const y1 = chartArrayDataJson['1'].Sales_PL;
+            const y2 = chartArrayDataJson['2'].Sales_PL;
+
+            const X1 = isCompact ? x1.slice(-5) : x1;
+            const X2 = isCompact ? x2.slice(-5) : x2;
+            const Y1 = isCompact ? y1.slice(-5) : y1;
+            const Y2 = isCompact ? y2.slice(-5) : y2;
+
+            const data = [
+                { x: X1, y: Y1, type: 'bar', name: chartArrayDataJson['1'].Legend, marker: { color: '#4e73df' } },
+                { x: X2, y: Y2, type: 'bar', name: chartArrayDataJson['2'].Legend, marker: { color: '#1cc88a' } }
+            ];
+
+            const layout = {
+                title: isCompact ? 'Sales (Last 5 Years)' : 'Sales (10 Years)',
+                barmode: 'group',
+                xaxis: { title: 'Financial Year' },
+                yaxis: { title: 'Sales (Rs. Crore)' },
+                showlegend: true,
+                legend: { orientation: 'h', y: -0.2 }
+            };
+
+            Plotly.newPlot(isCompact ? 'chart1' : 'modalChart', data, layout, { responsive: true });
+        }
+
+        // Plot Growth Chart
+        function plotGrowthChart(isCompact = true) {
+            const x1 = chartArrayDataJson['1'].FinancialYear_PL;
+            const x2 = chartArrayDataJson['2'].FinancialYear_PL;
+            const y1 = chartArrayDataJson['1'].Sales_Growth_PL;
+            const y2 = chartArrayDataJson['2'].Sales_Growth_PL;
+
+            const X1 = isCompact ? x1.slice(-5) : x1;
+            const X2 = isCompact ? x2.slice(-5) : x2;
+            const Y1 = isCompact ? y1.slice(-5) : y1;
+            const Y2 = isCompact ? y2.slice(-5) : y2;
+
+            const data = [
+                { 
+                    x: X1, y: Y1, type: 'scatter', mode: 'lines+markers', 
+                    name: chartArrayDataJson['1'].Legend,
+                    line: { color: '#4e73df', width: 3 },
+                    marker: { size: 8 }
+                },
+                { 
+                    x: X2, y: Y2, type: 'scatter', mode: 'lines+markers', 
+                    name: chartArrayDataJson['2'].Legend,
+                    line: { color: '#1cc88a', width: 3 },
+                    marker: { size: 8 }
+                }
+            ];
+
+            const layout = {
+                title: isCompact ? 'Sales Growth (Last 5 Years)' : 'Sales Growth (10 Years)',
+                xaxis: { title: 'Financial Year' },
+                yaxis: { title: 'Growth (%)' },
+                showlegend: true,
+                legend: { orientation: 'h', y: -0.2 }
+            };
+
+            Plotly.newPlot(isCompact ? 'chart2' : 'modalChart', data, layout, { responsive: true });
+        }
+
+        // Open chart in modal
+        function openChart(type) {
+            const modal = document.getElementById('chartModal');
+            modal.classList.add('active');
+
+            if (type === 'sales') {
+                plotSalesChart(false);
+            } else if (type === 'growth') {
+                plotGrowthChart(false);
+            }
+        }
+
+        // Close modal
+        function closeChartModal(event) {
+            if (event.target.id === 'chartModal' || event.target.classList.contains('close')) {
+                const modal = document.getElementById('chartModal');
+                modal.classList.remove('active');
+                Plotly.purge('modalChart');
+            }
+        }
+
+        // Initialize charts on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            plotSalesChart(true);
+            plotGrowthChart(true);
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('chartModal');
+                if (modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    Plotly.purge('modalChart');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

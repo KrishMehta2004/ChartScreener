@@ -1,0 +1,142 @@
+.chart-container {
+    padding: 8px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chart-row {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 40px;
+}
+
+.chart-card {
+    background-color: var(--bg-secondary);  
+    border-radius: 20px;
+    position: relative;
+    flex: 1;      
+    aspect-ratio: 1.5 / 1.0;    
+    outline: 1px solid var(--border-color);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 8px 16px rgba(0, 0, 0, 0.5); 
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.chart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.chart-card.info-open .info-overlay {
+    display: flex;
+    opacity: 1;
+}
+
+.info-btn {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.info-btn:hover {
+    background: #2563eb;
+}
+
+.info-btn:hover svg {
+    color: var(--bg-primary);
+}
+
+
+.info-btn svg {
+    color: var(--text-primary);
+}
+
+.info-overlay {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+.chart-card.info-open .chart {
+    filter: blur(40px);
+}
+
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    text-align: center;
+    max-width: 100%;
+}
+
+.info-content h3 {
+    margin: 0 0 0 0;
+    font-size: 30px;
+    color: var(--text-primary);
+}
+
+.info-content p {
+    margin: 0 0 0 0;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 25px;
+}
+
+.info-content math {
+    margin: 0 0 0 0;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 25px;
+}
+
+.info-overlay {
+    cursor: pointer;
+}
+
+
+@media (max-width: 935px)
+{
+    .chart-container {
+        padding: 12px 12px;
+    }
+    .chart-row {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#chart2 .modebar {
+  top: auto !important;
+  bottom: 0px !important;
+}

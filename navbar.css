@@ -1,7 +1,7 @@
 .navbar {
     background-color: var(--bg-secondary);
     min-height: 2.5vw;
-    padding: 8px 16px;
+    padding: 0.5vw 1vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +42,7 @@
 
 .links {
     display: flex;
-    gap: 16px;
+    gap: 2vw;
 }
 
 .links ul {
@@ -57,7 +57,7 @@
     border-radius: 8px;
     display: block;
     padding: 4px 8px;
-    font-size: 20px;
+    font-size: 1.5vw;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -75,16 +75,28 @@
 }
 
 .links ul li a svg {
-    width: 18px;
-    height: 18px;
+    width: 1.5vw;
+    height: 1.5vw;
 }
 
-.links ul li:hover {
-    cursor: pointer;
+/* Only apply hover on devices that support hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
+    .links ul li:hover {
+        cursor: pointer;
+        background-color: var(--text-primary);
+    }
+
+    .links ul li:hover a {
+        color: var(--bg-primary);
+    }
+}
+
+/* Add active state feedback for touch devices */
+.links ul li:active {
     background-color: var(--text-primary);
 }
 
-.links ul li:hover a {
+.links ul li:active a {
     color: var(--bg-primary);
 }
 

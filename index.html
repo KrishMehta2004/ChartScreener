@@ -12,7 +12,7 @@
 
         <!--title-->
         <title>
-            ChartScreener | Dashboard | Visualization | Compare Stocks
+            ChartScreener | Dashboard | Visualization Tool | Compare Stocks
         </title>
         <!--/title-->
 
@@ -28,9 +28,12 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="navbar.css">
         <link rel="stylesheet" href="fileUpload.css">
+        <link rel="stylesheet" href="charts.css">
+        <link rel="stylesheet" href="footer.css">
 
         <!--XLSX-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+        <script src="https://cdn.plot.ly/plotly-3.3.0.min.js" defer></script>
 
     </head>
     <!--/head-->
@@ -87,7 +90,7 @@
                             </li>
                             <li>
                                 <a href="https://x.com/DataInvestor_" target="_blank">
-                                    Follow
+                                    Twitter
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
                                         <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
                                     </svg>
@@ -290,15 +293,192 @@
                 </div>
                 <!--/fileUpload-->
 
+                <!--Charts-->
+                <div class="chart-container">
+
+                    <!--Chart Row 1-->
+                    <div class="chart-row">
+
+                        <!--Chart 1-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+                            <div class="chart" id="chart1"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                                <div class="info-content">
+                                    <h3>Revenue Trend (in Rs. Crore)</h3>
+                                    <p>Sales over the years</p>
+                                </div>
+                            </div>                        
+                        </div>
+                        <!--/Chart 1-->
+
+                        <!--Chart 2-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+                            <div class="chart" id="chart2"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                            <div class="info-content">
+                                <h3>Sales Growth Formula</h3>
+                                <math display="block">
+                                    <mrow>
+                                        <mi>Sales&nbsp;Growth</mi>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mi>Current&nbsp;Sales</mi>
+                                                <mo>−</mo>
+                                                <mi>Previous&nbsp;Sales</mi>
+                                            </mrow>
+                                            <mi>Previous&nbsp;Sales</mi>
+                                        </mfrac>
+                                        <mo>×</mo>
+                                        <mn>100</mn>
+                                    </mrow>
+                                </math>
+                            </div>
+
+                            </div>                        
+                        </div>
+                        <!--/Chart 2-->                    
+                    </div>     
+                    <!--/Chart Row 1-->
+                    
+                    <!--Chart Row 2-->
+                    <div class="chart-row">
+
+                        <!--Chart 3-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+                            <div class="chart" id="chart3"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                                <div class="info-content">
+                                    <h3>Revenue Trend (in Rs. Crore)</h3>
+                                    <p>Sales over the years</p>
+                                </div>
+                            </div>                        
+                        </div>
+                        <!--/Chart 3-->
+
+                        <!--Chart 4-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+                            <div class="chart" id="chart4"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                            <div class="info-content">
+                                <h3>Sales Growth Formula</h3>
+                                <math display="block">
+                                    <mrow>
+                                        <mi>Sales&nbsp;Growth</mi>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mi>Current&nbsp;Sales</mi>
+                                                <mo>−</mo>
+                                                <mi>Previous&nbsp;Sales</mi>
+                                            </mrow>
+                                            <mi>Previous&nbsp;Sales</mi>
+                                        </mfrac>
+                                        <mo>×</mo>
+                                        <mn>100</mn>
+                                    </mrow>
+                                </math>
+                            </div>
+
+                            </div>                        
+                        </div>
+                        <!--/Chart 4-->                    
+                    </div> 
+                    <!--/Chart Row 3-->                    
+
+                </div>
+                <!--/Charts-->
+
             </div>
             <!--page-content-->
+
+            <!--Footer-->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <div class="footer-brand">
+                            <!--company-logo-->
+                            <div class="company-logo">
+                                <a href=""><img src="Assets/logo-dark.svg" id="company-logo-dark" alt="logo"></a>
+                            </div>
+                            <!--/company-logo-->
+                            <div>
+                                Dashboard | Visualization Tool | Infographics
+                            </div>      
+
+                        </div>
+
+                        <div class="footer-note">
+                            No affilation with Screener.in or its parent company.
+                        </div> 
+
+                        <div class="footer-info">
+                            Maintained by <strong>Krish Mehta</strong>
+                            <a href="https://x.com/DataInvestor_" target="_blank">
+                                (@DataInvestor_)
+                            <br></a>
+                            Contact:
+                            <a href="mailto:krishmehta.engineer@gmail.com" class="footer-email">krishmehta.engineer@gmail.com</a>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="footer-right">
+                        <div class="footer-links">
+                            <a href="https://github.com/KrishMehta2004/ChartScreener" target="_blank" class="footer-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="https://github.com/KrishMehta2004/ChartScreener/blob/main/LICENSE" target="_blank" class="footer-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                                </svg>
+                                License
+                            </a>
+                        </div>
+                        <div class="footer-copyright">
+                            © Who reads this anyway?
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--/Footer-->
 
         </div>
         <!--/container-->
 
         <!--Add JS Files-->
         <script src="navbar.js"></script>
-        <script src="fu.js"></script>
+        <script src="fileUpload.js"></script>
+        <script src="utils.js"></script>
+        <script src="parse.js"></script>
+        <script src="charts.js"></script>
 
     </body>
     <!--/body-->
