@@ -33,6 +33,9 @@
     left: 0;
 }
 
+.js-plotly-plot .plotly .drag {
+    cursor: pointer !important;
+}
 
 .chart-card.info-open .info-overlay {
     display: flex;
@@ -123,6 +126,79 @@
 .info-overlay {
     cursor: pointer;
 }
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    width: 90vw;
+    height: 90vh;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    font-size: 40px;
+    color: red;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+#modalChart {
+    width: 100%;
+    height: 100%;
+}
+
 
 
 @media (max-width: 935px)

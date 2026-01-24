@@ -98,9 +98,37 @@
     color: black;
 }
 
+.btn-generate {
+    background: #00d138;
+    color: black;    
+}
+
 .btn-generate:hover {
     background: #00d138;
     color: black;
+}
+
+.pushable {
+background: hsl(118, 88%, 22%);
+border-radius: 12px;
+border: none;
+padding: 0;
+cursor: pointer;
+outline-offset: 4px;
+}
+
+.front {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: #00d138;
+    color: white;
+    transform: translateY(-6px);
+}
+
+.pushable:active .front {
+transform: translateY(-2px);
 }
 
 .file-upload-panel {
