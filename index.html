@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<!--HTML-->
+<html lang="en">
+
+    <!--head-->
+    <head>
+
+        <!--meta-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--title-->
+        <title>
+            ChartScreener | Dashboard | Visualization Tool | Infographics | Compare Stocks |
+        </title>
+        <!--/title-->
+
+        <!--fevicon-->
+        <link rel="icon" type="image/x-icon" href="Assets/fevicon.png">
+
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!--CSS files-->
+        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="CSS/navbar.css">
+        <link rel="stylesheet" href="CSS/fileUpload.css">
+        <link rel="stylesheet" href="CSS/charts.css">
+        <link rel="stylesheet" href="CSS/footer.css">
+
+        <!-- XLSX JS-->
+        <script src="xlsx.full.min.js" defer onerror="console.error('Failed to load XLSX')"></script>
+
+        <!-- Plotly JS-->
+        <script src="plotly-3.3.0.min.js" defer onerror="console.error('Failed to load Plotly')"></script>
+
+    </head>
+    <!--/head-->
+
+    <!--body-->
+    <body>
+
+        <!--container-->
+        <div class="container">
+
+            <!--navbar-->
+            <nav class="navbar">
+
+                <!--left-navbar-->
+                <div class="left-navbar">
+
+                    <!--company-logo-->
+                    <div class="company-logo">
+                        <a href=""><img src="Assets/logo-dark.svg" id="company-logo-dark" alt="logo"></a>
+                    </div>
+                    <!--/company-logo-->
+
+                </div>
+                <!--/left-navbar-->
+
+                <!--right-navbar-->
+                <div class=right-navbar>
+
+                    <!--Hamburger Menu for Mobile-->
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>                                                
+                    </button>
+
+                    <!-- Navigation Links -->
+                    <div class="links" id="navLinks">
+                        <ul>
+                            <!--Docs-->
+                            <li>
+                                <a href="https://x.com/DataInvestor_" target="_blank">
+                                    Docs 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                                        <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--Contact-->
+                            <li>
+                                <a href="https://x.com/DataInvestor_" target="_blank">
+                                    Contact
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--Twitter-->
+                            <li>
+                                <a href="https://x.com/DataInvestor_" target="_blank">
+                                    Twitter
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <!--Github-->
+                            <li> 
+                                <a href="https://github.com/KrishMehta2004" target="_blank">
+                                    Github 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- /Navigation Links -->
+
+                </div>
+                <!--/right-navbar-->
+
+            </nav>
+            <!--/navbar-->
+
+            <!--Footer-->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <div class="footer-brand">
+                            <!--company-logo-->
+                            <div class="company-logo">
+                                <a href=""><img src="Assets/logo-dark.svg" id="company-logo-dark" alt="logo"></a>
+                            </div>
+                            <!--/company-logo-->
+                            <div>
+                                Dashboard | Visualization Tool | Infographics
+                            </div>      
+
+                        </div>
+
+                        <div class="footer-note">
+                            No affilation with Screener.in or any other company.
+                        </div> 
+
+                        <div class="footer-info">
+                            Maintained by <strong>Krish Mehta</strong>
+                            <a href="https://x.com/DataInvestor_" target="_blank">
+                                (@DataInvestor_)
+                            <br></a>
+                            Contact:
+                            <a href="mailto:datainvestorinfo@gmail.com" class="footer-email">datainvestorinfo@gmail.com</a>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="footer-right">
+                        <div class="footer-links">
+                            <a href="https://x.com/DataInvestor_" target="_blank" class="footer-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="https://x.com/DataInvestor_" target="_blank" class="footer-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                                </svg>
+                                License
+                            </a>
+                        </div>
+                        <div class="footer-copyright">
+                            © Who reads this anyway?
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--/Footer-->  
+                      
+        </div>
+        <!--/container-->
+
+        <!--Add JS Files-->
+        <script src="JS/navbar.js" defer></script>
+        <!-- <script src="fileUpload.js" defer></script>
+        <script src="utils.js" defer></script>
+        <script src="parse.js" defer></script>
+        <script src="charts.js" defer></script>         -->
+
+    </body>
+    <!--/body-->
+
+</html>
+<!--/HTML-->

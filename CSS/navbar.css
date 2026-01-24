@@ -1,0 +1,169 @@
+.navbar {
+    background-color: var(--bg-secondary);
+    min-height: 2.5vw;
+    padding: 0.5vw 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 0px 0 var(--box-shadow),
+        0 3px 6px var(--box-shadow); 
+}
+
+.left-navbar {
+    display: flex;
+}
+
+#company-logo-dark {
+    min-height: 36px;
+    height: 2.5vw;
+}
+
+.right-navbar {
+    display: flex;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.links {
+    display: flex;
+    gap: 2vw;
+}
+
+.links ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.links ul li {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    display: block;
+    padding: 4px 8px;
+    font-size: 1.5vw;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    outline: 1px solid var(--text-primary);
+    transition: 0.15s ease-in-out;
+}
+
+.links ul li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+}
+
+.links ul li a svg {
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+/* Only apply hover on devices that support hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
+    .links ul li:hover {
+        cursor: pointer;
+        background-color: var(--text-primary);
+    }
+
+    .links ul li:hover a {
+        color: var(--bg-primary);
+    }
+}
+
+/* Add active state feedback for touch devices */
+.links ul li:active {
+    background-color: var(--text-primary);
+}
+
+.links ul li:active a {
+    color: var(--bg-primary);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - TABLET
+   ========================================================================== */
+@media (max-width: 935px) {
+    .navbar {
+        box-shadow: inset 0 0px 0 var(--box-shadow),
+            0 4.5px 9px var(--box-shadow); 
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - MOBILE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        box-shadow: inset 0 0px 0 var(--box-shadow),
+            0 4px 8px var(--box-shadow); 
+    }
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobile Navigation Links */
+    .links {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        top: 64px;
+        right: 16px;
+        background: var(--bg-secondary);
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: inset 0 0px 0 var(--box-shadow),
+            0 6px 12px var(--box-shadow); 
+        z-index: 1000;
+    }  
+    
+    .links.active {
+        display: flex;
+    }
+
+    .links ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .links ul li {
+        font-size: min(25px, 4.5vw);
+        width: 100%;
+    }
+
+    .links ul li a {
+        justify-content: center;
+    }
+
+    .links ul li a svg {
+        width: min(25px, 4.5vw);
+        height: min(25px, 4.5vw);
+    }
+
+    /* Blur background when mobile menu is open */
+    body.menu-open .page-content {
+        filter: blur(6px);
+        transition: filter 0.2s ease;
+    }
+}
