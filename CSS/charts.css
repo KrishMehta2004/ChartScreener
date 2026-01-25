@@ -1,0 +1,251 @@
+.chart-container {
+    padding: 8px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chart-row {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 40px;
+}
+
+.chart-card {
+    background-color: var(--bg-secondary);  
+    border-radius: 20px;
+    position: relative;
+    flex: 1;      
+    aspect-ratio: 1.5 / 1.0;    
+    outline: 1px solid var(--border-color);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 8px 16px rgba(0, 0, 0, 0.5); 
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.chart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.js-plotly-plot .plotly .drag {
+    cursor: pointer !important;
+}
+
+.chart-card.info-open .info-overlay {
+    display: flex;
+    opacity: 1;
+}
+
+.info-btn {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.info-btn:hover {
+    background: #2563eb;
+}
+
+.info-btn:hover svg {
+    color: var(--bg-primary);
+}
+
+
+.info-btn svg {
+    color: var(--text-primary);
+}
+
+.info-overlay {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+.open-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.open-btn:hover {
+    background: var(--text-primary);
+}
+
+.open-btn:hover svg {
+    color: var(--bg-primary);
+}
+
+
+.open-btn svg {
+    color: var(--text-primary);
+}
+
+.chart-card.info-open .chart {
+    filter: blur(40px);
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    text-align: center;
+    max-width: 100%;
+}
+
+.info-content h3 {
+    margin: 0 0 0 0;
+    font-size: 30px;
+    color: var(--text-primary);
+}
+
+.info-content p {
+    margin: 0 0 0 0;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.info-content math {
+    margin: 0 0 0 0;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.info-overlay {
+    cursor: pointer;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    width: 80vw;
+    height: 80vh;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    padding-right: 20px;
+    color: red;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+#modalChart {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width: 935px)
+{
+    .chart-container {
+        padding: 12px 24px;
+    }
+    .chart-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .open-btn {
+        display: none;
+    }
+}
