@@ -14,7 +14,7 @@
  * Each company gets a unique color for visual distinction
  */
 const colors = [
-    "rgb(255, 49, 49)",   // Company 1 - Red
+    "rgb(238, 75, 43)",   // Company 1 - Red
     "rgb(31, 192, 255)",  // Company 2 - Blue
     "rgb(234, 179, 8)",   // Company 3 - Yellow
     "rgb(34, 197, 94)"    // Company 4 - Green
@@ -55,19 +55,48 @@ const CHART_CONFIGS = {
         dataLimit: -5
     },
     'chart3': {
-        type: "bar",
-        xKey: "IndianFYQuarter_Q",
-        yKey: "Sales_Q",
-        title: "Quarterly Revenue Trend (Rs. in Crores)",
+        type: "line",
+        xKey: "FinancialYear_PL",
+        yKey: "Gross_Margin_PL",
+        title: "Gross Margin Trend (%)",
         dataLimit: -5
     },
     'chart4': {
         type: "line",
-        xKey: "IndianFYQuarter_Q",
-        yKey: "Sales_Growth_Q",
-        title: "Quarterly Sales Growth Trend (%)",
-        dataLimit: "Q "  
+        xKey: "FinancialYear_PL",
+        yKey: "Operating_Profit_Margin_PL",
+        title: "Operating Profit Margin Trend (%)",
+        dataLimit: -5  
+    },
+    'chart5': {
+        type: "line",
+        xKey: "FinancialYear_PL",
+        yKey: "Net_Profit_Margin_PL",
+        title: "Net Profit Margin Trend (%)",
+        dataLimit: -5  
+    },
+    'chart6': {
+        type: "line",
+        xKey: "FinancialYear_PL",
+        yKey: "Net_Profit_Growth_PL",
+        title: "Net Profit Growth (%)",
+        dataLimit: -5  
+    },
+    'chart7': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Operating_Profit_PL",
+        title: "Operating Profit Trend (Rs. in Crores)",
+        dataLimit: -5
+    },
+    'chart8': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Net_Profit_PL",
+        title: "Net Profit Trend (Rs. in Crores)",
+        dataLimit: -5
     }
+
 };
 
 // ============================================================================
@@ -180,7 +209,7 @@ function createBarChart(chartConfig, xyPairs) {
             y,
             name: pair.legend,
             type: "bar",
-            text: y,
+            text: y.map(v => v?.toLocaleString("en-IN")),
             textposition: "outside",
             cliponaxis: false,
             hoverinfo: "none",
@@ -323,7 +352,9 @@ function createLineChart(chartConfig, xyPairs) {
                         size: 16,
                         color: colors[pairIndex % colors.length]
                     },
-                    yshift: pairIndex % 2 === 0 ? 14 : -14  // Alternate positioning
+                    yshift: pairIndex % 2 === 0 ? 14 : -14,
+                    _traceIndex: pairIndex,   
+                    visible: true
                 });
             }
         });
@@ -368,6 +399,29 @@ function createLineChart(chartConfig, xyPairs) {
 
     // Step 7: Render the chart
     Plotly.newPlot(chartConfig.id, traces, layout, config);
+
+    const chartEl = document.getElementById(chartConfig.id);
+
+    chartEl.on('plotly_legendclick', function (e) {
+        const traceIndex = e.curveNumber;
+        const isVisible = e.data[traceIndex].visible !== 'legendonly';
+
+        const updatedAnnotations = chartEl.layout.annotations.map(ann => {
+            if (ann._traceIndex === traceIndex) {
+                return {
+                    ...ann,
+                    visible: !isVisible
+                };
+            }
+            return ann;
+        });
+
+        Plotly.relayout(chartEl, { annotations: updatedAnnotations });
+
+        // Let Plotly handle the actual trace toggling
+        return true;
+    });
+
 }
 
 // ============================================================================
@@ -402,8 +456,8 @@ function openChart(chartId) {
         createPairValues({
             ...baseConfig,
             id: "modalChart",
-            dataLimit: null,  // Show all available data
-            title: baseConfig.title + " - All Data"
+            dataLimit: null,
+            title: baseConfig.title
         });
     }
 }

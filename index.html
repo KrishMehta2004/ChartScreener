@@ -452,22 +452,10 @@
                             <div class="info-overlay" onclick="toggleInfo(this)">
                             <div class="info-content">
                                 <h3>Ebitda Margin %</h3>
-                                <math display="block">
-                                    <mrow>
-                                        <mi>Sales&nbsp;Growth</mi>
-                                        <mo>=</mo>
-                                        <mfrac>
-                                            <mrow>
-                                                <mi>Current&nbsp;Sales</mi>
-                                                <mo>−</mo>
-                                                <mi>Previous&nbsp;Sales</mi>
-                                            </mrow>
-                                            <mi>Previous&nbsp;Sales</mi>
-                                        </mfrac>
-                                        <mo>×</mo>
-                                        <mn>100</mn>
-                                    </mrow>
-                                </math>
+                                <p>
+                                EBITDA Margin = 
+                                [(Sales − Raw Material Cost + Change in Inventory − Power and Fuel − Other Manufacturing Expenses − Employee Cost − Selling and Admin − Other Expenses) ÷ Sales] × 100
+                                </p>
                             </div>
 
                             </div>                        
@@ -488,29 +476,23 @@
                                 </svg>
                             </button>
 
-                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart1')">
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart5')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
                                 </svg>                              
                             </button>
                                                         
-                            <div class="chart" id="chart5">NPM Margin</div>
+                            <div class="chart" id="chart5"></div>
                             <div class="info-overlay" onclick="toggleInfo(this)">
                                 <div class="info-content">
-                                    <h3>Gross Margin %</h3>
+                                    <h3>Net Margin %</h3>
                                     <math display="block">
                                         <mrow>
-                                            <mi>Gross&nbsp;Margin %</mi>
+                                            <mi>Net Margin %</mi>
                                             <mo>=</mo>
                                             <mfrac>
-                                                <mrow>
+                                                    <mi>Net Profit</mi>                                                  
                                                     <mi>Sales</mi>
-                                                    <mo>−</mo>
-                                                    <mi>Raw Material Cost</mi>
-                                                    <mo>+</mo>
-                                                    <mi>Change in Inventory</mi>                                                    
-                                                </mrow>
-                                                <mi>Sales</mi>
                                             </mfrac>
                                             <mo>×</mo>
                                             <mn>100</mn>
@@ -530,27 +512,27 @@
                                 </svg>
                             </button>
 
-                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart1')">
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart6')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
                                 </svg>                              
                             </button>
 
-                            <div class="chart" id="chart6">Npm Growth</div>
+                            <div class="chart" id="chart6"></div>
                             <div class="info-overlay" onclick="toggleInfo(this)">
                             <div class="info-content">
-                                <h3>Ebitda Margin %</h3>
+                                <h3>Net Profit Growth % (Including Exp items)</h3>
                                 <math display="block">
                                     <mrow>
-                                        <mi>Sales&nbsp;Growth</mi>
+                                        <mi>Net Profit Growth</mi>
                                         <mo>=</mo>
                                         <mfrac>
                                             <mrow>
-                                                <mi>Current&nbsp;Sales</mi>
+                                                <mi>Current&nbsp;Net Profit</mi>
                                                 <mo>−</mo>
-                                                <mi>Previous&nbsp;Sales</mi>
+                                                <mi>Previous&nbsp;Net Profit</mi>
                                             </mrow>
-                                            <mi>Previous&nbsp;Sales</mi>
+                                            <mi>Previous&nbsp;Net Profit</mi>
                                         </mfrac>
                                         <mo>×</mo>
                                         <mn>100</mn>
@@ -576,34 +558,18 @@
                                 </svg>
                             </button>
 
-                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart1')">
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart7')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
                                 </svg>                              
                             </button>
                                                         
-                            <div class="chart" id="chart7">Ebitda</div>
+                            <div class="chart" id="chart7"></div>
                             <div class="info-overlay" onclick="toggleInfo(this)">
                                 <div class="info-content">
-                                    <h3>Gross Margin %</h3>
-                                    <math display="block">
-                                        <mrow>
-                                            <mi>Gross&nbsp;Margin %</mi>
-                                            <mo>=</mo>
-                                            <mfrac>
-                                                <mrow>
-                                                    <mi>Sales</mi>
-                                                    <mo>−</mo>
-                                                    <mi>Raw Material Cost</mi>
-                                                    <mo>+</mo>
-                                                    <mi>Change in Inventory</mi>                                                    
-                                                </mrow>
-                                                <mi>Sales</mi>
-                                            </mfrac>
-                                            <mo>×</mo>
-                                            <mn>100</mn>
-                                        </mrow>
-                                    </math>                                    
+                                    <h3>Operating Profit (in Rs. Crore)</h3>
+                                    <p>Operating Profit over the years</p>
+                                                                     
                                 </div>
                             </div>                        
                         </div>
@@ -618,32 +584,17 @@
                                 </svg>
                             </button>
 
-                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart1')">
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart8')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
                                 </svg>                              
                             </button>
 
-                            <div class="chart" id="chart8">Net Profit Trend</div>
+                            <div class="chart" id="chart8"></div>
                             <div class="info-overlay" oclick="toggleInfo(this)">
                             <div class="info-content">
-                                <h3>Ebitda Margin %</h3>
-                                <math display="block">
-                                    <mrow>
-                                        <mi>Sales&nbsp;Growth</mi>
-                                        <mo>=</mo>
-                                        <mfrac>
-                                            <mrow>
-                                                <mi>Current&nbsp;Sales</mi>
-                                                <mo>−</mo>
-                                                <mi>Previous&nbsp;Sales</mi>
-                                            </mrow>
-                                            <mi>Previous&nbsp;Sales</mi>
-                                        </mfrac>
-                                        <mo>×</mo>
-                                        <mn>100</mn>
-                                    </mrow>
-                                </math>
+                                <h3>Net Profit (in Rs. Crore)</h3>
+                                <p>Net Profit over the years</p>                                
                             </div>
 
                             </div>                        
@@ -730,7 +681,9 @@
         <script src="JS/initialData.js" defer></script>
         <script src="JS/charts.js" defer></script>        
         <script src="JS/script.js" defer></script>
-
+        <script src="JS/fileUpload.js" defer></script>
+        <script src="JS/parse.js" defer></script>
+        <script src="JS/Utils.js" defer></script>
 
         <!-- <script src="utils.js" defer></script>
         <script src="parse.js" defer></script>

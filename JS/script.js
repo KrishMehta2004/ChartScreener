@@ -2,4 +2,6 @@
 
 window.chartArrayDataJson = initialChartDataJson;
 
-createAllCharts();
+if (window.initialChartDataJson && Object.keys(window.initialChartDataJson).length > 0) {
+    createAllCharts();
+}
