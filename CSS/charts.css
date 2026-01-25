@@ -30,8 +30,12 @@
     height: 100%;
     position: absolute;
     top: 0;
+    font-size: 16px;
+    text-align: center;
     left: 0;
 }
+
+
 
 .js-plotly-plot .plotly .drag {
     cursor: pointer !important;

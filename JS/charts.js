@@ -51,7 +51,9 @@ function createChart({ id, type, xKey, yKey, title, dataLimit }) {
         ({ traces, layout } = createLineChart(xKey, yKey, title, dataLimit));
     }
     
-    Plotly.newPlot(id, traces, layout, config);
+    // Plotly.newPlot(id, traces, layout, config);
+    document.getElementById(id).textContent = "Hello World";
+
 }
 
 // Reusable bar chart creator

@@ -219,7 +219,7 @@ function parseXLSX(fileNo, arrayDataJSON) {
         chart_FinancialYear_PL.push(FYdate);
 
         // Quarterly Date
-        const IndianFYQuarter = excelDateToIndianFYQuarter(report_date_Q[i]);
+        // const IndianFYQuarter = excelDateToIndianFYQuarter(report_date_Q[i]);
         console.log("Indian FY Quarter:",IndianFYQuarter);
 
         chart_FinancialYear_Q.push(IndianFYQuarter);
