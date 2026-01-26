@@ -97,6 +97,30 @@
   margin-bottom: 1px;
 }
 
+/* Hide loader initially */
+.loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Loading state */
+.loading .btn-icon {
+  display: none;
+}
+
+.loading .loader {
+  display: inline-block;
+}
+
 .pushable:active .front {
   transform: translateY(-2px);
 }

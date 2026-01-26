@@ -152,6 +152,36 @@ const CHART_CONFIGS = {
         title: "Debt/Equity Trend",
         dataLimit: -5  
     }, 
+    'chart17': {
+        type: "line",
+        xKey: "FinancialYear_PL",
+        yKey: "Returns",
+        title: "Stock Price Return (%)",
+        dataLimit: -5  
+    }, 
+    'chart18': {
+        type: "line",
+        xKey: "FinancialYear_PL",
+        yKey: "Dividend_Yield_PL",
+        title: "Dividend Payout (%) Trend",
+        dataLimit: -5  
+    }, 
+    'chart19': {
+        type: "bar",
+        xKey: "IndianFYQuarter_Q",
+        yKey: "Sales_Q",
+        title: "Quarterly Revenue Trend (Rs. in Crores)",
+        dataLimit: -5
+    },
+    'chart20': {
+        type: "line",
+        xKey: "IndianFYQuarter_Q",
+        yKey: "Sales_Growth_Q",
+        title: "Quaterly Sales Growth Trend (%)",
+        dataLimit: -5
+    }
+
+    
 };
 
 // ============================================================================

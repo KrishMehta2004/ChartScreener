@@ -361,3 +361,17 @@ function clearAllCharts() {
     }
 
 }
+
+const generateBtn = document.getElementById("generate");
+
+generateBtn.addEventListener("click", () => {
+  const front = generateBtn.querySelector(".front");
+
+  // show loader
+  front.classList.add("loading");
+
+  // simulate work (replace with real logic)
+  setTimeout(() => {
+    front.classList.remove("loading");
+  }, 1200); // snaps back
+});

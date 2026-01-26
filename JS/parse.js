@@ -253,6 +253,12 @@ function parseXLSX(fileNo, arrayDataJSON) {
     //Debt equity Ratio
     chart_debt_equity_bs = [];
 
+    //Stock Growth
+    chart_stock_growth_PL = [null];
+
+    //Dividend yield
+    chart_dividend_yield_PL = [];
+
 
     // ------Calculate-------
 
@@ -337,7 +343,11 @@ function parseXLSX(fileNo, arrayDataJSON) {
         const debt_equity = borrowings_BS[i]/(equity_share_capital_BS[i] + reserves_BS[i]);
         chart_debt_equity_bs.push(parseFloat(debt_equity.toFixed(2)));
 
+        // Dividend yield
+        const Dividend_yield = (dividend_amount_PL[i]/net_profit)*100;
+        chart_dividend_yield_PL.push(parseFloat(Dividend_yield.toFixed(2)));
     }
+
 
     // Growth Calculations
     // Sales YOY growth calculation
@@ -369,6 +379,11 @@ function parseXLSX(fileNo, arrayDataJSON) {
             console.log("Net Profit YOY Growth:",sales_growth);
 
             chart_net_profit_growth_PL.push(parseFloat(net_profit_growth.toFixed(2)));
+
+            // Return 
+            const stock_growth = ((price[i] - price[i-1]) / price[i-1]) * 100;
+
+            chart_stock_growth_PL.push(parseFloat(stock_growth.toFixed(2)));
         }
     }
 
@@ -446,22 +461,18 @@ function parseXLSX(fileNo, arrayDataJSON) {
     // Debt/Equity
     chartArrayDataJson[fileNo]["Debt_Equity_BS"] = chart_debt_equity_bs;
 
+    // Stocks Price return
+    chartArrayDataJson[fileNo]["Returns"] = chart_stock_growth_PL;
 
+    // Dividend Yield
+    chartArrayDataJson[fileNo]["Dividend_Yield_PL"] = chart_dividend_yield_PL;
 
     // Indian Financial Year Quarter Q
     chartArrayDataJson[fileNo]["IndianFYQuarter_Q"] = chart_FinancialYear_Q;
-
-
-
-
 
     // Sales Q
     chartArrayDataJson[fileNo]["Sales_Q"] = chart_sales_Q;
 
     // Sales Growth Q
     chartArrayDataJson[fileNo]["Sales_Growth_Q"] = chart_sales_growth_Q;
-
-
-    // Print chartArrayDataJson
-
 }

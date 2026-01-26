@@ -164,12 +164,18 @@
                             </button>                
 
                             <button id="generate" class="pushable generate-shadow">
-                                <span class="front generate">
-                                    Generate <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
-                                                <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
-                                            </svg>
+                            <span class="front generate">
+                                <span class="btn-text">Generate</span>
+                                <span class="btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                                    <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+                                </svg>
                                 </span>
+
+                                <span class="loader"></span>
+                            </span>
                             </button>
+
                         </div>
                         <!--/Generate and Clear button-->
                     </div>
@@ -652,7 +658,7 @@
                             <div class="info-overlay" oclick="toggleInfo(this)">
                             <div class="info-content">
                                 <h3>Inventory Days</h3>
-                                <p>Inventory Days = [(Inventory/[Raw Material Cost - Change in Inventory])* 100]</p>                             
+                                <p>Inventory Days = [(Inventory/[Raw Material Cost - Change in Inventory])* 365]</p>                             
                             </div>
 
                             </div>                        
@@ -682,8 +688,8 @@
                             <div class="chart" id="chart11"></div>
                             <div class="info-overlay" onclick="toggleInfo(this)">
                                 <div class="info-content">
-                                    <h3>Debtor Days</h3>
-                                    <p>Debtor Days = [Receivables*365/Sales]</p>                                                                     
+                                    <h3>Cash from Operations (in Rs. Crore)</h3>
+                                    <p>Cash from Operations over the years.</p>                                                                     
                                 </div>
                             </div>                        
                         </div>
@@ -707,8 +713,8 @@
                             <div class="chart" id="chart12"></div>
                             <div class="info-overlay" oclick="toggleInfo(this)">
                             <div class="info-content">
-                                <h3>Inventory Days</h3>
-                                <p>Inventory Days = [(Inventory/[Raw Material Cost - Change in Inventory])* 100]</p>                             
+                                <h3>Cash from Investing (in Rs. Crore)</h3>
+                                <p>Cash from Investing over the years</p>                             
                             </div>
 
                             </div>                        
@@ -738,8 +744,8 @@
                             <div class="chart" id="chart13"></div>
                             <div class="info-overlay" onclick="toggleInfo(this)">
                                 <div class="info-content">
-                                    <h3>Debtor Days</h3>
-                                    <p>Debtor Days = [Receivables*365/Sales]</p>                                                                     
+                                    <h3>Cash from Financing (in Rs. Crore)</h3>
+                                    <p>Cash from Financing over the years</p>                                                                     
                                 </div>
                             </div>                        
                         </div>
@@ -763,8 +769,8 @@
                             <div class="chart" id="chart14"></div>
                             <div class="info-overlay" oclick="toggleInfo(this)">
                             <div class="info-content">
-                                <h3>Inventory Days</h3>
-                                <p>Inventory Days = [(Inventory/[Raw Material Cost - Change in Inventory])* 100]</p>                             
+                                <h3>Net Cash Flow (in Rs. Crore)</h3>
+                                <p>Net Cash Flow over the years</p>                             
                             </div>
 
                             </div>                        
@@ -795,7 +801,7 @@
                             <div class="info-overlay" onclick="toggleInfo(this)">
                                 <div class="info-content">
                                     <h3>Debt in Rs. Crore</h3>
-                                    <p>Debtor Days = [Receivables*365/Sales]</p>                                                                     
+                                    <p>Borrowings over the years</p>                                                                     
                                 </div>
                             </div>                        
                         </div>
@@ -819,15 +825,142 @@
                             <div class="chart" id="chart16"></div>
                             <div class="info-overlay" oclick="toggleInfo(this)">
                             <div class="info-content">
-                                <h3>Inventory Days</h3>
-                                <p>Inventory Days = [(Inventory/[Raw Material Cost - Change in Inventory])* 100]</p>                             
+                                <h3>Debt/Equity Trend</h3>
+                                <p>Debt/Equity = Borrowings / (Reserves + Equity capital)</p>                             
                             </div>
 
                             </div>                        
                         </div>
                         <!--/Chart 14-->                    
                     </div>     
-                    <!--/Chart Row 8-->                      
+                    <!--/Chart Row 8--> 
+                    
+                    <!--Chart Row 9-->
+                    <div class="chart-row">
+
+                        <!--Chart 17-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart17')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                                </svg>                              
+                            </button>
+                                                        
+                            <div class="chart" id="chart17"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                                <div class="info-content">
+                                    <h3>Stock Price Return (%)</h3>
+                                    <p>Returns = ((current Price - prev price)/prev price)*100</p>                                                                     
+                                </div>
+                            </div>                        
+                        </div>
+                        <!--/Chart 17-->
+
+                        <!--Chart 18-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart18')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                                </svg>                              
+                            </button>
+
+                            <div class="chart" id="chart18"></div>
+                            <div class="info-overlay" oclick="toggleInfo(this)">
+                            <div class="info-content">
+                                <h3>Dividend Payout (%) Trend</h3>
+                                <p>Dividend Payout (%) = (Dividend Payout/Net Profit)*100</p>                             
+                            </div>
+
+                            </div>                        
+                        </div>
+                        <!--/Chart 18-->                    
+                    </div>     
+                    <!--/Chart Row 9-->    
+                    
+                    <!--Chart Row 10-->
+                    <div class="chart-row">
+
+                        <!--Chart 19-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart19')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                                </svg>                              
+                            </button>
+                                                        
+                            <div class="chart" id="chart19"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                                <div class="info-content">
+                                    <h3>Quarterly Revenue Trend (Rs. in Crores)</h3>
+                                    <p>Quarterly Revenue over the years</p>                                                                     
+                                </div>
+                            </div>                        
+                        </div>
+                        <!--/Chart 19-->
+
+                        <!--Chart 20-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart20')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                                </svg>                              
+                            </button>
+
+                            <div class="chart" id="chart20"></div>
+                            <div class="info-overlay" oclick="toggleInfo(this)">
+                            <div class="info-content">
+                                <h3>Quaterly Sales Growth Trend (%)</h3>
+                                <math display="block">
+                                    <mrow>
+                                        <mi>Sales&nbsp;Growth</mi>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mi>Current&nbsp;Sales</mi>
+                                                <mo>−</mo>
+                                                <mi>Previous&nbsp;Sales</mi>
+                                            </mrow>
+                                            <mi>Previous&nbsp;Sales</mi>
+                                        </mfrac>
+                                        <mo>×</mo>
+                                        <mn>100</mn>
+                                    </mrow>
+                                </math>                             
+                            </div>
+
+                            </div>                        
+                        </div>
+                        <!--/Chart 20-->                    
+                    </div>     
+                    <!--/Chart Row 10-->                             
 
                     <!-- Chart Modal -->
                     <div id="chartModal" class="modal" onclick="closeChartModal(event)">
