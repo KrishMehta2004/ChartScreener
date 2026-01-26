@@ -177,7 +177,7 @@ const CHART_CONFIGS = {
         type: "line",
         xKey: "IndianFYQuarter_Q",
         yKey: "Sales_Growth_Q",
-        title: "Quaterly Sales Growth Trend (%)",
+        title: "Quarterly Sales Growth Trend (%)",
         dataLimit: -5
     }
 
