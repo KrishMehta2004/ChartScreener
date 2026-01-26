@@ -228,7 +228,7 @@ document.addEventListener('click', (e) => {
  * Called when data is loaded and ready to be visualized
  */
 function createAllCharts() {
-    console.log("Creating all charts with data:", window.chartArrayDataJson);
+    // console.log("Creating all charts with data:", window.chartArrayDataJson);
 
     // Create each chart using the predefined configurations
     Object.entries(CHART_CONFIGS).forEach(([id, config]) => {
@@ -249,7 +249,7 @@ function createAllCharts() {
  * @param {number|null} chartConfig.dataLimit - Number of data points to show (negative for last N)
  */
 function createPairValues(chartConfig) {
-    console.log("Creating chart with config:", chartConfig);
+    // console.log("Creating chart with config:", chartConfig);
 
     // Extract X-Y pairs for each company from the global data
     const xyPairs = {};
@@ -290,7 +290,7 @@ function createBarChart(chartConfig, xyPairs) {
         .reduce((acc, set) => new Set([...acc].filter(x => set.has(x))));
 
     if (commonX.size === 0) {
-        console.warn("No common X values found for", chartConfig.title);
+        // console.warn("No common X values found for", chartConfig.title);
         return;
     }
 
@@ -401,7 +401,7 @@ function createLineChart(chartConfig, xyPairs) {
         .reduce((acc, set) => new Set([...acc].filter(x => set.has(x))));
 
     if (commonX.size === 0) {
-        console.warn("No common X values found for", chartConfig.title);
+        // console.warn("No common X values found for", chartConfig.title);
         return;
     }
 
@@ -546,7 +546,7 @@ let currentModalChart = null;
  * @param {string} chartId - ID of the chart to open in modal
  */
 function openChart(chartId) {
-    console.log("Opening chart modal for:", chartId);
+    // console.log("Opening chart modal for:", chartId);
     
     const modal = document.getElementById('chartModal');
     modal.classList.add('active');

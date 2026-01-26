@@ -47,20 +47,20 @@ function setupFileCard(cardNumber) {
     
     // Validate elements exist
     if (!fileInputBox || !fileInput || !browseButton || !deleteButton) {
-        console.warn(`File card ${cardNumber} elements not found`);
+        // console.warn(`File card ${cardNumber} elements not found`);
         return;
     }
     
     // Click on card triggers file selection
     fileInputBox.addEventListener("click", () => {
-        console.log(`File Input ${cardNumber} clicked`);
+        // console.log(`File Input ${cardNumber} clicked`);
         fileInput.click();
     });
     
     // Browse button triggers file selection
     browseButton.addEventListener("click", (e) => {
         e.stopPropagation(); // Prevent card click from firing
-        console.log(`Browse button ${cardNumber} clicked`);
+        // console.log(`Browse button ${cardNumber} clicked`);
         fileInput.click();
     });
     
@@ -103,7 +103,7 @@ function setupFileCard(cardNumber) {
 function handleFileSelection(file, cardNumber) {
     // Validate file exists
     if (!file) {
-        console.warn(`No file selected for card ${cardNumber}`);
+        // console.warn(`No file selected for card ${cardNumber}`);
         return;
     }
     
@@ -116,7 +116,7 @@ function handleFileSelection(file, cardNumber) {
     
     // Validate and process the file
     validateScreenerFile(file, cardNumber);
-    console.log(`User uploaded Excel to card ${cardNumber}:`, file.name);
+    // console.log(`User uploaded Excel to card ${cardNumber}:`, file.name);
 }
 
 /**
@@ -135,11 +135,11 @@ function validateScreenerFile(file, cardNumber) {
             
             // Get sheet names
             const sheetNames = workbook.SheetNames;
-            console.log(`Card ${cardNumber} sheet names:`, sheetNames);
+            // console.log(`Card ${cardNumber} sheet names:`, sheetNames);
             
             // Validate file structure (must have 6 sheets with "Data Sheet" as the last one)
             if (sheetNames.length === 6 && sheetNames[5] === "Data Sheet") {
-                console.log(`Valid Screener.in file for card ${cardNumber}`);
+                // console.log(`Valid Screener.in file for card ${cardNumber}`);
                 
                 // Extract data from "Data Sheet"
                 const worksheet = workbook.Sheets["Data Sheet"];
@@ -147,7 +147,7 @@ function validateScreenerFile(file, cardNumber) {
                 
                 // Store parsed data
                 arrayDataJSON[cardNumber] = arrayData;
-                console.log(`Card ${cardNumber} data stored:`, arrayData.length, "rows");
+                // console.log(`Card ${cardNumber} data stored:`, arrayData.length, "rows");
                 
                 // Update UI to show success
                 const card = document.getElementById(`input-file-${cardNumber}`);
@@ -159,13 +159,13 @@ function validateScreenerFile(file, cardNumber) {
             }
             
         } catch (error) {
-            console.error(`Error parsing file for card ${cardNumber}:`, error);
+            // console.error(`Error parsing file for card ${cardNumber}:`, error);
             handleInvalidFile(cardNumber, "Error reading file. Please try again.");
         }
     };
     
     reader.onerror = (err) => {
-        console.error(`File read error for card ${cardNumber}:`, err);
+        // console.error(`File read error for card ${cardNumber}:`, err);
         handleInvalidFile(cardNumber, "Error reading file. Please try again.");
     };
     
@@ -214,11 +214,11 @@ function setUploadedState(card, fileName) {
  * @param {number} cardNumber - The card number
  */
 function handleFileDelete(cardNumber) {
-    console.log(`Delete button ${cardNumber} clicked`);
+    // console.log(`Delete button ${cardNumber} clicked`);
     
     // Check if file exists
     if (!filesState[cardNumber]) {
-        console.warn(`No file to delete for card ${cardNumber}`);
+        // console.warn(`No file to delete for card ${cardNumber}`);
         return;
     }
     
@@ -241,7 +241,7 @@ function handleFileDelete(cardNumber) {
         clearAllCharts();
     }
 
-    console.log(`Deleted file from card ${cardNumber}. Remaining files:`, Object.keys(filesState));
+    // console.log(`Deleted file from card ${cardNumber}. Remaining files:`, Object.keys(filesState));
     
     // Reset card UI
     const card = document.getElementById(`input-file-${cardNumber}`);
@@ -283,7 +283,7 @@ function setupControlButtons() {
  * Handle Generate button click
  */
 function handleGenerate() {
-    console.log("Generate button clicked");
+    // console.log("Generate button clicked");
     
     // Check if at least one file is uploaded
     const uploadedFiles = Object.keys(filesState);
@@ -293,8 +293,8 @@ function handleGenerate() {
         return;
     }
     
-    console.log(`Generating with ${uploadedFiles.length} file(s):`, uploadedFiles);
-    console.log("Available data:", arrayDataJSON);
+    // console.log(`Generating with ${uploadedFiles.length} file(s):`, uploadedFiles);
+    // console.log("Available data:", arrayDataJSON);
     
     // Parse the arrayDataJSON
     parseAllFiles(arrayDataJSON);
@@ -308,12 +308,12 @@ function handleGenerate() {
  * Clear all uploaded files
  */
 function handleClearAll() {
-    console.log("Clear all button clicked");
+    // console.log("Clear all button clicked");
     
     // Confirm action if files exist
     const uploadedFiles = Object.keys(filesState);
     if (uploadedFiles.length === 0) {
-        console.log("No files to clear");
+        // console.log("No files to clear");
         return;
     }
     
@@ -333,7 +333,7 @@ function handleClearAll() {
             delete arrayDataJSON[i];
             delete window.chartArrayDataJson[i];
 
-            console.log(`Deleted file from card ${i}. Remaining files:`, Object.keys(filesState));
+            // console.log(`Deleted file from card ${i}. Remaining files:`, Object.keys(filesState));
             
             // Reset card UI
             const card = document.getElementById(`input-file-${i}`);
@@ -344,13 +344,13 @@ function handleClearAll() {
     }
     
     clearAllCharts();
-    console.log("All files cleared");
+    // console.log("All files cleared");
 
 }
 
 function clearAllCharts() {
     // Implement chart clearing logic here
-    console.log("Clearing all charts");
+    // console.log("Clearing all charts");
     
     // Assign id chart1 = ""
     for (let i = 1; i <= 29; i++) {

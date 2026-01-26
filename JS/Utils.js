@@ -1,10 +1,10 @@
 function excelDateToFY(excelSerial) {
 
-    console.log("Converting Excel Date Serial:", excelSerial);
+    // console.log("Converting Excel Date Serial:", excelSerial);
 
     // If undefined or null, return empty string
     if (excelSerial === undefined || excelSerial === null) {
-        console.log("Input is undefined or null. Returning empty string.");
+        // console.log("Input is undefined or null. Returning empty string.");
         return null;
     }
 
@@ -22,11 +22,11 @@ function excelDateToFY(excelSerial) {
 
 function excelDateToIndianFYQuarter(excelSerial) {
 
-    console.log("Converting Excel Date Serial:", excelSerial);
+    // console.log("Converting Excel Date Serial:", excelSerial);
 
     // If undefined or null, return empty string
     if (excelSerial === undefined || excelSerial === null) {
-        console.log("Input is undefined or null. Returning empty string.");
+        // console.log("Input is undefined or null. Returning empty string.");
         return null;
     }
 
