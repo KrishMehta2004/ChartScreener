@@ -78,8 +78,8 @@ const CHART_CONFIGS = {
     'chart6': {
         type: "line",
         xKey: "FinancialYear_PL",
-        yKey: "Net_Profit_Growth_PL",
-        title: "Net Profit Growth (%)",
+        yKey: "Return_On_Equity_BS",
+        title: "Return on Equity (%)",
         dataLimit: -5  
     },
     'chart7': {
@@ -90,13 +90,68 @@ const CHART_CONFIGS = {
         dataLimit: -5
     },
     'chart8': {
+        type: "line",
+        xKey: "FinancialYear_PL",
+        yKey: "Net_Profit_Growth_PL",
+        title: "Net Profit Growth (%)",
+        dataLimit: -5  
+    },
+    'chart9': {
         type: "bar",
         xKey: "FinancialYear_PL",
-        yKey: "Net_Profit_PL",
-        title: "Net Profit Trend (Rs. in Crores)",
-        dataLimit: -5
-    }
-
+        yKey: "Debtor_Days_BS",
+        title: "Debtor Days",
+        dataLimit: -5  
+    },
+    'chart10': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Inventory_Days_BS",
+        title: "Inventory Days",
+        dataLimit: -5  
+    },
+    'chart11': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Cash_from_Operations_CF",
+        title: "Cash from Operations (in Rs. Crore)",
+        dataLimit: -5  
+    },
+    'chart12': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Cash_from_Investing_CF",
+        title: "Cash from Investing (in Rs. Crore)",
+        dataLimit: -5  
+    },
+    'chart13': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Cash_from_Financing_CF",
+        title: "Cash from Financing (in Rs. Crore)",
+        dataLimit: -5  
+    },
+    'chart14': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Net_Cash_Flow_CF",
+        title: "Net Cash Flow (in Rs. Crore)",
+        dataLimit: -5  
+    },        
+    'chart15': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Debt_BS",
+        title: "Debt (in Rs. Crore)",
+        dataLimit: -5  
+    },
+    'chart16': {
+        type: "bar",
+        xKey: "FinancialYear_PL",
+        yKey: "Debt_Equity_BS",
+        title: "Debt/Equity Trend",
+        dataLimit: -5  
+    }, 
 };
 
 // ============================================================================
@@ -110,9 +165,29 @@ const CHART_CONFIGS = {
 function toggleInfo(el) {
     const card = el.closest('.chart-card');
     const overlay = card.querySelector('.info-overlay');
+
+    // Close all other open cards first
+    document.querySelectorAll('.chart-card.info-open').forEach(c => {
+        if (c !== card) {
+            c.classList.remove('info-open');
+            c.querySelector('.info-overlay')?.classList.remove('active');
+        }
+    });
+
+    // Toggle current one
     overlay.classList.toggle('active');
     card.classList.toggle('info-open');
 }
+
+/* Close info when clicking anywhere outside */
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.chart-card')) {
+        document.querySelectorAll('.chart-card.info-open').forEach(card => {
+            card.classList.remove('info-open');
+            card.querySelector('.info-overlay')?.classList.remove('active');
+        });
+    }
+});
 
 // ============================================================================
 // CHART CREATION ORCHESTRATION

@@ -217,6 +217,9 @@ function parseXLSX(fileNo, arrayDataJSON) {
     // chart_net_profit_margin_PL Array
     chart_net_profit_margin_PL = [];
 
+    // Return on Equity
+    chart_return_on_equity_BS = [null];
+
     // chart_net_profit_growth_PL Array
     chart_net_profit_growth_PL = [null];
 
@@ -225,6 +228,30 @@ function parseXLSX(fileNo, arrayDataJSON) {
 
     // Net Profit PL
     chart_net_profit_PL = [];
+
+    // Debtor Days BS
+    chart_debtor_days_BS = [];
+
+    // Inventory Days
+    chart_inventory_days_BS = [];
+
+    // Cash from ops
+    chart_cash_from_operations = [];
+
+    // Cash from fin
+    chart_cash_from_financing = [];
+
+    //cash from inv
+    chart_cash_from_investing = [];
+
+    //net cash flow
+    chart_net_cash_flow = [];
+
+    //Debt
+    chart_debt_bs = [];
+
+    //Debt equity Ratio
+    chart_debt_equity_bs = [];
 
 
     // ------Calculate-------
@@ -283,6 +310,33 @@ function parseXLSX(fileNo, arrayDataJSON) {
         // Net Profit PL
         chart_net_profit_PL.push(Math.round(net_profit));
 
+        // Debtor Days
+        const debtor_days = (receivables_BS[i] / sales) * 365;
+        chart_debtor_days_BS.push(Math.round(debtor_days));
+
+        // Inventory Days
+        const inventory_days = (inventory_BS[i]/(raw_material_cost_PL[i]-change_in_inventory_PL[i]))*365
+        chart_inventory_days_BS.push(Math.round(inventory_days));
+
+        // Cash from OPs
+        chart_cash_from_operations.push(Math.round(cash_from_operating_activity_CF[i]));
+
+        //Cash from Investing Activty
+        chart_cash_from_investing.push(Math.round(cash_from_investing_activity_CF[i]));
+
+        //Cash from Finance Activity
+        chart_cash_from_financing.push(Math.round(cash_from_financing_activity_CF[i]));
+
+        //Net cash flow
+        chart_net_cash_flow.push(Math.round(net_cash_flow_CF[i]));
+
+        // Debt
+        chart_debt_bs.push(Math.round(borrowings_BS[i]));
+
+        // Debt/Equity
+        const debt_equity = borrowings_BS[i]/(equity_share_capital_BS[i] + reserves_BS[i]);
+        chart_debt_equity_bs.push(parseFloat(debt_equity.toFixed(2)));
+
     }
 
     // Growth Calculations
@@ -302,6 +356,12 @@ function parseXLSX(fileNo, arrayDataJSON) {
             console.log("Sales YOY Growth:",sales_growth);
 
             chart_sales_growth_PL.push(parseFloat(sales_growth.toFixed(2)));
+
+            // Return on Equity Calc
+            const avg_shareholders_equity = (equity_share_capital_BS[i-1] + equity_share_capital_BS[i] + reserves_BS[i-1] + reserves_BS[i])/2
+            const return_on_equity = net_profit_PL[i] * 100/avg_shareholders_equity;
+
+            chart_return_on_equity_BS.push(parseFloat(return_on_equity.toFixed(2)));
 
             // Net Profit growth PL
             const net_profit_growth = ((net_profit_PL[i] - net_profit_PL[i - 1]) / Math.abs(net_profit_PL[i - 1])) * 100;
@@ -350,6 +410,9 @@ function parseXLSX(fileNo, arrayDataJSON) {
     // Net Profit Margin PL
     chartArrayDataJson[fileNo]["Net_Profit_Margin_PL"] = chart_net_profit_margin_PL;
 
+    // Return on Equity
+    chartArrayDataJson[fileNo]["Return_On_Equity_BS"] = chart_return_on_equity_BS;
+
     // Net Profit Growth PL
     chartArrayDataJson[fileNo]["Net_Profit_Growth_PL"] = chart_net_profit_growth_PL;
 
@@ -357,7 +420,31 @@ function parseXLSX(fileNo, arrayDataJSON) {
     chartArrayDataJson[fileNo]["Operating_Profit_PL"] = chart_operating_profit_PL;
     
     // Net Profit Growth PL
-    chartArrayDataJson[fileNo]["Net_Profit_PL"] = chart_net_profit_PL;    
+    chartArrayDataJson[fileNo]["Net_Profit_PL"] = chart_net_profit_PL; 
+    
+    // Debtor Days
+    chartArrayDataJson[fileNo]["Debtor_Days_BS"] = chart_debtor_days_BS;
+
+    // Inventory Days
+    chartArrayDataJson[fileNo]["Inventory_Days_BS"] = chart_inventory_days_BS;
+
+    // Cssh from ops
+    chartArrayDataJson[fileNo]["Cash_from_Operations_CF"] = chart_cash_from_operations;
+
+    // Cssh from fin
+    chartArrayDataJson[fileNo]["Cash_from_Financing_CF"] = chart_cash_from_financing;
+
+    // Cssh from inv
+    chartArrayDataJson[fileNo]["Cash_from_Investing_CF"] = chart_cash_from_investing;
+
+    // Cssh from ops
+    chartArrayDataJson[fileNo]["Net_Cash_Flow_CF"] = chart_net_cash_flow;
+
+    // Debt
+    chartArrayDataJson[fileNo]["Debt_BS"] = chart_debt_bs;
+
+    // Debt/Equity
+    chartArrayDataJson[fileNo]["Debt_Equity_BS"] = chart_debt_equity_bs;
 
 
 
