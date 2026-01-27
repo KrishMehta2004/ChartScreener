@@ -346,12 +346,12 @@ function createBarChart(chartConfig, xyPairs) {
         barcornerradius: 8,
         font: {
             family: "Roboto Condensed, sans-serif",
-            size: 16,
+            size: 20,
             color: "#e0e0e0"
         },
         title: {
             text: chartConfig.title,
-            font: { size: 20 }
+            font: { size: 25 }
         },
         xaxis: {
             tickfont: { size: 18 },
@@ -454,8 +454,8 @@ function createLineChart(chartConfig, xyPairs) {
                     text: `${yVal.toFixed(1)}%`,
                     showarrow: false,
                     font: {
-                        size: 16,
-                        color: colors[pairIndex % colors.length]
+                        size: 20,
+                        color: "#e0e0e0"
                     },
                     yshift: pairIndex % 2 === 0 ? 14 : -14,
                     _traceIndex: pairIndex,   
@@ -479,7 +479,7 @@ function createLineChart(chartConfig, xyPairs) {
         },
         title: {
             text: chartConfig.title,
-            font: { size: 20 }
+            font: { size: 25 }
         },
         xaxis: {
             tickfont: { size: 18 },
