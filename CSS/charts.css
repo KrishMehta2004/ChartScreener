@@ -233,6 +233,17 @@
     transform: scale(1.2);
 }
 
+/* Move modebar below chart */
+.chart .modebar {
+    font-size: 36px;
+    right: 48px !important;
+}
+
+.modal .modebar{
+    font-size: 36px;
+    right: 48px !important;
+}
+
 #modalChart {
     width: 100%;
     height: 100%;

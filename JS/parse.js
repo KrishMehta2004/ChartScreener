@@ -12,7 +12,7 @@ function parseAllFiles(arrayDataJSON) {
         parseXLSX(fileNo, arrayDataJSON);
     });
 
-    // console.log("Final ChartArray:" ,window.chartArrayDataJson);
+    console.log("Final ChartArray:" ,window.chartArrayDataJson);
 }
 
 function parseXLSX(fileNo, arrayDataJSON) {
@@ -259,6 +259,12 @@ function parseXLSX(fileNo, arrayDataJSON) {
     //Dividend yield
     chart_dividend_yield_PL = [];
 
+    // Quartely Operating Margin
+    chart_quartely_operating_margin = [];
+
+    // Quartely Net Margin
+    chart_quartely_net_margin = [];
+
 
     // ------Calculate-------
 
@@ -346,6 +352,18 @@ function parseXLSX(fileNo, arrayDataJSON) {
         // Dividend yield
         const Dividend_yield = (dividend_amount_PL[i]/net_profit)*100;
         chart_dividend_yield_PL.push(parseFloat(Dividend_yield.toFixed(2)));
+
+        // Quartely OPM
+        const quartely_operating_profit = operating_profit_Q[i];
+        const quartely_operating_profit_margin = quartely_operating_profit*100/salesQ;
+
+        chart_quartely_operating_margin.push(parseFloat(quartely_operating_profit_margin.toFixed(2)));
+
+        // Quartely NPM
+        const quartely_net_profit = net_profit_Q[i];
+        const quartely_net_profit_margin = quartely_net_profit*100/salesQ;
+
+        chart_quartely_net_margin.push(parseFloat(quartely_net_profit_margin.toFixed(2)));
     }
 
 
@@ -475,4 +493,10 @@ function parseXLSX(fileNo, arrayDataJSON) {
 
     // Sales Growth Q
     chartArrayDataJson[fileNo]["Sales_Growth_Q"] = chart_sales_growth_Q;
+
+    // Quartely Operating Margin
+    chartArrayDataJson[fileNo]["Quartely_OPM"] = chart_quartely_operating_margin; 
+
+    // Net Profit Margin
+    chartArrayDataJson[fileNo]["Quartely_NPM"] = chart_quartely_net_margin;
 }

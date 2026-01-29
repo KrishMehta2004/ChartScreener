@@ -960,7 +960,78 @@
                         </div>
                         <!--/Chart 20-->                    
                     </div>     
-                    <!--/Chart Row 10-->                             
+                    <!--/Chart Row 10-->     
+                    
+                    <!--Chart Row 11-->
+                    <div class="chart-row">
+
+                        <!--Chart 21-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart21')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                                </svg>                              
+                            </button>
+                                                        
+                            <div class="chart" id="chart21"></div>
+                            <div class="info-overlay" onclick="toggleInfo(this)">
+                                <div class="info-content">
+                                    <h3>Quarterly Operating Margin</h3>
+                                    <p>Operating Profit*100/Sales</p>                                                                     
+                                </div>
+                            </div>                        
+                        </div>
+                        <!--/Chart 21-->
+
+                        <!--Chart 22-->
+                        <div class="chart-card">
+                            <button class="info-btn" onclick="toggleInfo(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                </svg>
+                            </button>
+
+                            <button class="open-btn" onclick="event.stopPropagation(); openChart('chart22')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                                </svg>                              
+                            </button>
+
+                            <div class="chart" id="chart22"></div>
+                            <div class="info-overlay" oclick="toggleInfo(this)">
+                            <div class="info-content">
+                                <h3>Quaterly Sales Growth Trend (%)</h3>
+                                <math display="block">
+                                    <mrow>
+                                        <mi>Sales&nbsp;Growth</mi>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mi>Current&nbsp;Sales</mi>
+                                                <mo>−</mo>
+                                                <mi>Previous&nbsp;Sales</mi>
+                                            </mrow>
+                                            <mi>Previous&nbsp;Sales</mi>
+                                        </mfrac>
+                                        <mo>×</mo>
+                                        <mn>100</mn>
+                                    </mrow>
+                                </math>                             
+                            </div>
+
+                            </div>                        
+                        </div>
+                        <!--/Chart 22-->                    
+                    </div>     
+                    <!--/Chart Row 11-->                        
 
                     <!-- Chart Modal -->
                     <div id="chartModal" class="modal" onclick="closeChartModal(event)">

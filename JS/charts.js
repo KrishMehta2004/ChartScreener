@@ -26,7 +26,7 @@ const colors = [
  */
 const config = {
     responsive: false,
-    displayModeBar: false,
+    displayModeBar: true,
     modeBarButtonsToRemove: [
         'zoom2d', 'pan2d', 'select2d', 'lasso2d', 
         'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d', 
@@ -153,7 +153,7 @@ const CHART_CONFIGS = {
         dataLimit: -5  
     }, 
     'chart17': {
-        type: "line",
+        type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Returns",
         title: "Stock Price Return (%)",
@@ -179,7 +179,21 @@ const CHART_CONFIGS = {
         yKey: "Sales_Growth_Q",
         title: "Quarterly Sales Growth Trend (%)",
         dataLimit: -5
-    }
+    },
+    'chart21': {
+        type: "line",
+        xKey: "IndianFYQuarter_Q",
+        yKey: "Quartely_OPM",
+        title: "Quarterly Operating Margin Trend (%)",
+        dataLimit: -5
+    },
+    'chart22': {
+        type: "line",
+        xKey: "IndianFYQuarter_Q",
+        yKey: "Quartely_NPM",
+        title: "Quarterly Net Margin Trend (%)",
+        dataLimit: -5
+    },     
 
     
 };
