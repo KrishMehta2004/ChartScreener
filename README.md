@@ -267,7 +267,7 @@ const colors = [
 
 Change how many years/quarters to display:
 ```javascript
-dataLimit: -5  // Last 5 periods
+dataLimit: -6  // Last 6 periods
 dataLimit: -10 // Last 10 periods
 dataLimit: null // All available data
 ```
@@ -345,7 +345,7 @@ This project is licensed under the MIT License - see below for details:
 ```
 MIT License
 
-Copyright (c) 2024 Krish Mehta
+Copyright (c) 2026 Krish Mehta
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -429,7 +429,6 @@ This tool is for educational and informational purposes only. It is not affiliat
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/chartscreener/issues)
 - **Email**: datainvestorinfo@gmail.com
 - **Twitter**: [@DataInvestor_](https://x.com/DataInvestor_)
 
@@ -440,7 +439,5 @@ This tool is for educational and informational purposes only. It is not affiliat
 ### ⭐ Star this repository if you found it helpful!
 
 **Made with ❤️ by Krish Mehta**
-
-[Report Bug](https://github.com/yourusername/chartscreener/issues) · [Request Feature](https://github.com/yourusername/chartscreener/issues) · [Documentation](https://github.com/yourusername/chartscreener/wiki)
 
 </div>

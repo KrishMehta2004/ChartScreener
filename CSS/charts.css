@@ -66,16 +66,48 @@
     z-index: 10;
 }
 
+.download-btn {
+    position: absolute;
+    top: 6px;
+    right: 54px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
 .info-btn:hover {
     background: #2563eb;
+}
+
+.download-btn:hover {
+    background: #fffb00;
 }
 
 .info-btn:hover svg {
     color: var(--bg-primary);
 }
 
+.download-btn:hover svg {
+    color: var(--bg-primary);
+}
+
 
 .info-btn svg {
+    color: var(--text-primary);
+}
+
+.download-btn svg {
     color: var(--text-primary);
 }
 
@@ -227,6 +259,10 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.2s;
+}
+
+.modal .download-btn {
+    right: 108px;
 }
 
 .close:hover {
