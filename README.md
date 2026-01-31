@@ -49,7 +49,7 @@ All you need is a modern web browser (Chrome, Firefox, Safari, or Edge). No inst
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/chartscreener.git
+   git clone https://github.com/KrishMehta2004/chartscreener.git
    cd chartscreener
    ```
 
