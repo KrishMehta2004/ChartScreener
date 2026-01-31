@@ -26,7 +26,7 @@ const colors = [
  */
 const config = {
     responsive: false,
-    displayModeBar: true,
+    displayModeBar: false,
     modeBarButtonsToRemove: [
         'zoom2d', 'pan2d', 'select2d', 'lasso2d', 
         'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d', 
@@ -39,163 +39,164 @@ const config = {
  * Chart configurations - Single source of truth
  * Defines all chart types, data mappings, and display settings
  */
+
+const DATA_LIMIT = -6;
+
 const CHART_CONFIGS = {
     'chart1': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Sales_PL",
         title: "Revenue Trend (Rs. in Crores)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart2': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Sales_Growth_PL",
         title: "Sales Growth Trend (%)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart3': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Gross_Margin_PL",
         title: "Gross Margin Trend (%)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart4': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Operating_Profit_Margin_PL",
         title: "Operating Profit Margin Trend (%)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart5': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Net_Profit_Margin_PL",
         title: "Net Profit Margin Trend (%)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart6': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Return_On_Equity_BS",
         title: "Return on Equity (%)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart7': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Operating_Profit_PL",
         title: "Operating Profit Trend (Rs. in Crores)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart8': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Net_Profit_Growth_PL",
         title: "Net Profit Growth (%)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart9': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Debtor_Days_BS",
         title: "Debtor Days",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart10': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Inventory_Days_BS",
         title: "Inventory Days",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart11': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Cash_from_Operations_CF",
         title: "Cash from Operations (in Rs. Crore)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart12': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Cash_from_Investing_CF",
         title: "Cash from Investing (in Rs. Crore)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart13': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Cash_from_Financing_CF",
         title: "Cash from Financing (in Rs. Crore)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart14': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Net_Cash_Flow_CF",
         title: "Net Cash Flow (in Rs. Crore)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },        
     'chart15': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Debt_BS",
         title: "Debt (in Rs. Crore)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     },
     'chart16': {
-        type: "bar",
+        type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Debt_Equity_BS",
         title: "Debt/Equity Trend",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     }, 
     'chart17': {
         type: "bar",
         xKey: "FinancialYear_PL",
         yKey: "Returns",
         title: "Stock Price Return (%)",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     }, 
     'chart18': {
         type: "line",
         xKey: "FinancialYear_PL",
         yKey: "Dividend_Yield_PL",
         title: "Dividend Payout (%) Trend",
-        dataLimit: -5  
+        dataLimit: DATA_LIMIT  
     }, 
     'chart19': {
         type: "bar",
         xKey: "IndianFYQuarter_Q",
         yKey: "Sales_Q",
         title: "Quarterly Revenue Trend (Rs. in Crores)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart20': {
         type: "line",
         xKey: "IndianFYQuarter_Q",
         yKey: "Sales_Growth_Q",
         title: "Quarterly Sales Growth Trend (%)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart21': {
         type: "line",
         xKey: "IndianFYQuarter_Q",
         yKey: "Quartely_OPM",
         title: "Quarterly Operating Margin Trend (%)",
-        dataLimit: -5
+        dataLimit: DATA_LIMIT
     },
     'chart22': {
         type: "line",
         xKey: "IndianFYQuarter_Q",
         yKey: "Quartely_NPM",
         title: "Quarterly Net Margin Trend (%)",
-        dataLimit: -5
-    },     
-
-    
+        dataLimit: DATA_LIMIT
+    }
 };
 
 // ============================================================================
@@ -372,17 +373,29 @@ function createBarChart(chartConfig, xyPairs) {
             tickmode: 'linear',
             tick0: finalX[0],
             dtick: 1,
+            showgrid: true,
+            gridcolor: "rgba(255,255,255,0.1)",
+            zeroline: false
         },
         yaxis: {
-            visible: false,
-            range: [minY - yPadding, maxY + yPadding]
+            range: [minY - yPadding, maxY + yPadding],
+            visible: true,
+            showgrid: true,
+            gridcolor: "rgba(255,255,255,0.1)",
+            zeroline: false,
+            showline: false,     // hide axis line
+            showticklabels: false, // hide numbers
+            ticks: "",          // hide ticks
+            ticklen: 0
         },
+
+        
         legend: {
             x: 0,
-            y: 1.075,
+            y: 1.115,
             bgcolor: "#2d2d2d",
             bordercolor: "rgba(255,255,255,0)",
-            font: { size: 14 },
+            font: { size: 15 },
             orientation: 'h'
         },
         barmode: "group",
@@ -455,24 +468,55 @@ function createLineChart(chartConfig, xyPairs) {
     });
 
     // Step 5: Create value annotations for each data point
+    // Group values by x-position to detect overlaps
     const annotations = [];
-    pairs.forEach((pair, pairIndex) => {
-        finalX.forEach((xVal) => {
+    
+    finalX.forEach((xVal) => {
+        // Collect all y-values at this x position
+        const valuesAtX = pairs.map((pair, pairIndex) => {
             const yVal = pair.y[pair.x.indexOf(xVal)];
+            return {
+                yVal,
+                pairIndex,
+                color: colors[pairIndex]
+            };
+        }).filter(item => item.yVal !== null && item.yVal !== undefined && !isNaN(item.yVal));
 
-            // Only add annotation if value exists and is not null
-            if (yVal !== null && yVal !== undefined && !isNaN(yVal)) {
+        // Sort by y-value to find clusters
+        valuesAtX.sort((a, b) => a.yVal - b.yVal);
+
+        // Track which values should be shown (avoid clutter)
+        const shouldShow = new Array(valuesAtX.length).fill(true);
+        
+        // Hide annotations that are too close to each other (within 2% range)
+        for (let i = 0; i < valuesAtX.length - 1; i++) {
+            if (shouldShow[i]) {
+                for (let j = i + 1; j < valuesAtX.length; j++) {
+                    if (Math.abs(valuesAtX[i].yVal - valuesAtX[j].yVal) <= 2) {
+                        // Values are close - hide the second one
+                        shouldShow[j] = false;
+                    } else {
+                        // Values are far enough apart - stop checking
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Create annotations only for non-hidden values
+        valuesAtX.forEach((item, idx) => {
+            if (shouldShow[idx]) {
                 annotations.push({
                     x: xVal,
-                    y: yVal,
-                    text: `${yVal.toFixed(1)}%`,
+                    y: item.yVal,
+                    text: `${item.yVal.toFixed(1)}%`,
                     showarrow: false,
                     font: {
                         size: 20,
                         color: "#e0e0e0"
                     },
-                    yshift: pairIndex % 2 === 0 ? 14 : -14,
-                    _traceIndex: pairIndex,   
+                    yshift: item.pairIndex % 2 === 0 ? 14 : -14,
+                    _traceIndex: item.pairIndex,
                     visible: true
                 });
             }
@@ -500,9 +544,19 @@ function createLineChart(chartConfig, xyPairs) {
             tickmode: 'linear',
             tick0: finalX[0],
             dtick: 1,
+            showgrid: true,
+            gridcolor: "rgba(255,255,255,0.1)",
+            zeroline: false
         },
         yaxis: {
-            visible: false
+            visible: true,
+            showgrid: true,
+            gridcolor: "rgba(255,255,255,0.1)",
+            zeroline: false,
+            showline: false,     // hide axis line
+            showticklabels: false, // hide numbers
+            ticks: "",          // hide ticks
+            ticklen: 0
         },
         legend: {
             x: 0,
@@ -541,6 +595,21 @@ function createLineChart(chartConfig, xyPairs) {
         return true;
     });
 
+}
+
+function DownloadChart(chartId) {
+    const target = document.getElementById(chartId);
+    domtoimage.toPng(target, {
+        quality: 1,
+        scale: 5,
+    }).then(function (dataUrl) {
+        const link = document.createElement('a');
+        link.download = `${chartId}.png`;
+        link.href = dataUrl;
+        link.click();
+    }).catch(function (error) {
+        console.error('Error generating image:', error);
+    });
 }
 
 // ============================================================================

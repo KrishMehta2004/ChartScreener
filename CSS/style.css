@@ -14,6 +14,13 @@
     --company-4 : #2CFF05;
 }
 
+@font-face {
+    font-family: "Roboto Condensed";
+    src: url("../Assets/fonts/RobotoCondensed-Medium.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;

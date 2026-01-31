@@ -58,3 +58,8 @@ function excelDateToIndianFYQuarter(excelSerial) {
 
     return `${quarter} FY${String(fyStartYear + 1).slice(-2)}`;
 }
+
+function calcCAGR(start, end, years) {
+    if (!start || !end || start <= 0 || years <= 0) return null;
+    return parseFloat(((Math.pow(end / start, 1 / years) - 1) * 100).toFixed(2));
+}

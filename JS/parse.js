@@ -364,6 +364,8 @@ function parseXLSX(fileNo, arrayDataJSON) {
         const quartely_net_profit_margin = quartely_net_profit*100/salesQ;
 
         chart_quartely_net_margin.push(parseFloat(quartely_net_profit_margin.toFixed(2)));
+
+        
     }
 
 
@@ -419,6 +421,24 @@ function parseXLSX(fileNo, arrayDataJSON) {
             chart_sales_growth_Q.push(parseFloat((((sales_Q[i]-sales_Q[i-4])/sales_Q[i-4])*100).toFixed(1)));
         }
     }
+
+    // ================= CAGR CALCULATIONS =================
+
+    function buildCAGRArray(dataArr) {
+        const n = dataArr.length - 1; // last index (latest year)
+
+        return [
+            n >= 1  ? calcCAGR(dataArr[n-1],  dataArr[n], 1)  : null,  // 1Y
+            n >= 3  ? calcCAGR(dataArr[n-3],  dataArr[n], 3)  : null,  // 3Y
+            n >= 5  ? calcCAGR(dataArr[n-5],  dataArr[n], 5)  : null,  // 5Y
+            n >= 10 ? calcCAGR(dataArr[n-10], dataArr[n],10) : null   //10Y
+        ];
+    }
+
+    // Build CAGR Arrays (each = [1Y,3Y,5Y,10Y])
+    const chart_sales_CAGR = buildCAGRArray(chart_sales_PL);
+    const chart_profit_CAGR = buildCAGRArray(chart_net_profit_PL);
+    const chart_price_CAGR = buildCAGRArray(price);
 
     // Store in chartArratDataJson
 
@@ -499,4 +519,10 @@ function parseXLSX(fileNo, arrayDataJSON) {
 
     // Net Profit Margin
     chartArrayDataJson[fileNo]["Quartely_NPM"] = chart_quartely_net_margin;
+
+    // Cagr
+    chartArrayDataJson[fileNo]["Sales_CAGR"] = chart_sales_CAGR;
+    chartArrayDataJson[fileNo]["Profit_CAGR"] = chart_profit_CAGR;
+    chartArrayDataJson[fileNo]["Price_CAGR"] = chart_price_CAGR;
+
 }
